@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">Exifor</string>
     <string name="open_button">열기</string>
+    <string name="save_button">저장</string>
+    <string name="select_image_toast">EXIF를 편집할 이미지를 선택하세요.</string>
+    <string name="image_saved_toast">이미지가 저장되었습니다.</string>
 </resources>
