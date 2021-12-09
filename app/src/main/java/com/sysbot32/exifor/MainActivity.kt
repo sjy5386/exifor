@@ -38,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.saveButton.setOnClickListener {
+            if (!::srcUri.isInitialized) {
+                return@setOnClickListener
+            }
+
             val values = ContentValues().apply {
                 put(MediaStore.Images.Media.DISPLAY_NAME, srcFilename)
                 put(MediaStore.Images.Media.MIME_TYPE, contentResolver.getType(srcUri))
@@ -77,6 +81,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.datetimeTextView.setOnClickListener {
+            if (!::srcUri.isInitialized) {
+                return@setOnClickListener
+            }
+
             val calendar = Calendar.getInstance()
             DatePickerDialog(
                 this,
@@ -133,6 +141,7 @@ class MainActivity : AppCompatActivity() {
                         attributes[ExifInterface.TAG_DATETIME] = datetime
                         binding.datetimeTextView.text = datetime
                     }
+                    binding.saveButton.isEnabled = true
                 }
             }
         }
